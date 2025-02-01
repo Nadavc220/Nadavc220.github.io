@@ -147,17 +147,27 @@
 
 
 /* Additions */
-
-/* Style the header container to be fixed */
+/* Set the profile section to always be at the top */
 body {
-    font-family: Arial, sans-serif;
-    /* background-color: #f5f5f5; */
-    background-color: #e3e2df;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #e3e2df;
+  display: flex;
+  justify-content: flex-start;  /* Changed from center */
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-top: 0;  /* Ensure no top padding */
+  margin-top: 0;   /* Ensure no top margin */
+}
+
+.header-container {
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+  background-color: #e3e2df;
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 0;   /* Ensure no top margin */
 }
 
 .publication-block1 {
