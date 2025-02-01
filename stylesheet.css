@@ -149,17 +149,6 @@
 /* Additions */
 
 /* Style the header container to be fixed */
-.header-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #e3e2df; /* You can adjust this color */
-  z-index: 1000; /* Ensures the header stays above other content */
-  padding: 20px 0; /* Add some padding for better layout */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional, adds a subtle shadow */
-}
-
 body {
     font-family: Arial, sans-serif;
     /* background-color: #f5f5f5; */
