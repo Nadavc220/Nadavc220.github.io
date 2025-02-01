@@ -20,50 +20,52 @@
 </head>
 
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Nadav Cohen</name>
-              </p>
-              <p> I’m a Computer Science Ph.D. student at Reichman University, under the supervision of <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">Prof. Ariel Shamir</a>.</p>
-              <p> My main research interest is generative models for 2D and 3D applications.
-                  In particular, my interest lies in developing new art forms using algorithms and advancing 3D applications for the game and animation world.</p>
-              <p>In my spare time I enjoy painting, photographing nature, gaming, and spending time with my family and friends.</p>
-              <p style="text-align:center">
-                <a href="mailto:nadavc220@gmail.com">Email</a> &nbsp/&nbsp
-                <a href="https://github.com/Nadavc220">Github</a> &nbsp/&nbsp
-                <a href="https://www.linkedin.com/in/nadavc220/">LinkedIn</a> &nbsp/&nbsp
-                <a href="https://scholar.google.com/citations?hl=iw&user=fq-Ja3wAAAAJ">Google Scholar</a> &nbsp/&nbsp
-                <a href="https://x.com/nadavc220">Twitter</a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <a href="images/profile.jpg"><img style="width:70%;max-width:70%" alt="Nadav Cohen" src="images/profile.jpg" class="hoverZoomLink"></a>
-            </td>
-          </tr>
-        </tbody></table>
-        <!-- <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody> -->
+  <div class=header-container>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr style="padding:0px">
+              <td style="padding:2.5%;width:63%;vertical-align:middle">
+                <p style="text-align:center">
+                  <name>Nadav Cohen</name>
+                </p>
+                <p> I’m a Computer Science Ph.D. student at Reichman University, under the supervision of <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">Prof. Ariel Shamir</a>.</p>
+                <p> My main research interest is generative models for 2D and 3D applications.
+                    In particular, my interest lies in developing new art forms using algorithms and advancing 3D applications for the game and animation world.</p>
+                <p>In my spare time I enjoy painting, photographing nature, gaming, and spending time with my family and friends.</p>
+                <p style="text-align:center">
+                  <a href="mailto:nadavc220@gmail.com">Email</a> &nbsp/&nbsp
+                  <a href="https://github.com/Nadavc220">Github</a> &nbsp/&nbsp
+                  <a href="https://www.linkedin.com/in/nadavc220/">LinkedIn</a> &nbsp/&nbsp
+                  <a href="https://scholar.google.com/citations?hl=iw&user=fq-Ja3wAAAAJ">Google Scholar</a> &nbsp/&nbsp
+                  <a href="https://x.com/nadavc220">Twitter</a>
+                </p>
+              </td>
+              <td style="padding:2.5%;width:40%;max-width:40%">
+                <a href="images/profile.jpg"><img style="width:70%;max-width:70%" alt="Nadav Cohen" src="images/profile.jpg" class="hoverZoomLink"></a>
+              </td>
+            </tr>
+          </tbody></table>
+        
+          <!-- <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody> -->
 
-         <!-- Navigation Buttons -->
-        <div style="text-align: left; padding-left: 250px; margin-top: 20px; margin-bottom: 20px;">
-          <button onclick="showSection('news')">News</button>
-          <button onclick="showSection('publications')">Publications</button>
-          <button onclick="showSection('art')">Art</button>
+          <!-- Navigation Buttons -->
+          <div style="text-align: left; padding-left: 250px; margin-top: 20px; margin-bottom: 20px;">
+            <button onclick="showSection('news')">News</button>
+            <button onclick="showSection('publications')">Publications</button>
+            <button onclick="showSection('art')">Art</button>
+          </div>
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         </div>
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
         <!-- Sections -->
-        <div id="news" class="content-section" style="display:none;">
+        <div id="news" class="content-section" >
           <h2>News</h2>
           <p>Latest updates and news go here...</p>
         </div>
 
-        <div id="publications" class="content-section">
+        <div id="publications" class="content-section"style="display:none;">
           <h2>Publications</h2>
           <!-- <p>List of publications goes here...</p> -->
           <!-- Conditional Balance  -->
