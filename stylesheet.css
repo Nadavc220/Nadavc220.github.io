@@ -145,9 +145,15 @@
 
 
 
-
+/* xdg-open index.html */
 /* Additions */
 /* Set the profile section to always be at the top */
+.reenie-beanie-regular {
+  font-family: "Reenie Beanie", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #e3e2df;
@@ -170,37 +176,44 @@ body {
   margin-top: 0;   /* Ensure no top margin */
 }
 
-.publication-block1 {
-    width: 80%;
-    background: #e64833;
-    /* background: white; */
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    margin: 20px 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.publication-block {
+  width: 95%;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 20px auto;  /* Changed from margin: 20px 0 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.publication-block1:hover {
+.publication-block:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-.publication-block2 {
-  width: 80%;
-  background: #ffe400;
-  /* background: white; */
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  margin: 20px 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.red-block {
+  background: #e64833;
 }
 
-.publication-block2:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+.yellow-block {
+  background: #ffe400;
 }
+
+.purple-block {
+  background-color:blueviolet;  /* Light blue background */
+  color: white;
+}
+
+.green-block {
+  background-color:#14a76c;  /* Light blue background */
+  color: white;
+}
+
+.blue-block {
+  background-color:#2945e4;  /* Light blue background */
+  color: white;
+}
+
+
 
 .paper-title {
     font-size: 20px;
@@ -263,4 +276,222 @@ body {
 
 .paper-info a:hover {
     text-decoration: underline;
+}
+
+
+/* Add these new styles for the fade effect */
+.content-section {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  position: absolute;  /* This helps prevent layout shifts */
+  width: 100%;
+}
+
+.content-section.active {
+  opacity: 1;
+  display: block;
+}
+
+/* Add this to ensure proper positioning of sections
+#news, #publications, #art {
+  width: 100%;
+} */
+
+/* Update the art section specifically */
+#art {
+  width: 100%;
+  max-width: 1000px; /* Increase from 800px to 1000px */
+  margin: 0 auto;
+}
+
+#art .header-container {
+  width: 100%;
+  max-width: 1000px; /* Increase from 800px to 1000px */
+  margin: 0 auto;
+}
+
+#art .art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1000px; /* Increase from 800px to 1000px */
+  margin: 0 auto;
+}
+
+/* Add this to contain the sections */
+.sections-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;  /* Adjust this value based on your content */
+}
+
+.rounded-box {
+  padding: 15px;             /* Space inside the box */
+  border-radius: 10px;       /* Rounded corners */
+}
+
+.rounded-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+button {
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 0 10px;
+  background: transparent;
+  color: black;  /* Changed initial color to black */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  position: relative;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #e64833;
+  transition: width 0.3s ease;
+}
+
+button:hover {
+  color: #e64833;  /* Text color changes to match the line on hover */
+}
+
+button:hover::after {
+  width: 100%;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.social-icons {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.social-icon {
+  display: inline-block;
+  margin: 0 15px;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+.social-icon img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.site-footer p {
+  margin: 5px 0;
+  color: #333;
+}
+
+/* Ensure the footer is always at the bottom */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e3e2df;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sections-container {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  /* Add min-height here to ensure space for content */
+  min-height: 500px;
+}
+
+.content-section {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: opacity 0.5s ease-in-out;
+  /* Remove height: auto as it doesn't work well with absolute positioning */
+}
+
+.content-section.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  /* Remove min-height from here */
+}
+
+.site-footer {
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  margin-top: 30px;
+}
+
+/* Add these styles to your CSS */
+
+.header-container {
+  width: 100%;
+  max-width: 1000px; /* Increase from 800px to 1000px */
+  margin: 0 auto;
+}
+
+.sections-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px; /* Increase from 800px to 1000px */
+  margin: 0 auto;
+  flex: 1;
+  min-height: 500px;
+}
+
+table {
+  width: 100%;
+  max-width: 1000px; /* Increase from 800px to 1000px */
+  border: 0px;
+  border-spacing: 0px;
+  border-collapse: separate;
+  margin-right: auto;
+  margin-left: auto;
 }
