@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+  <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
         <div class="header-container">
@@ -584,30 +584,41 @@
         </footer>
 
         <script>
+          /* Modified showSection function to eliminate shifting */
           function showSection(sectionId) {
             let sections = document.getElementsByClassName('content-section');
             
-            // Hide all sections
+            // First set all other sections to opacity 0
             for (let section of sections) {
-              section.style.opacity = '0';
-              section.style.visibility = 'hidden';
-              section.classList.remove('active');
-              section.style.display = 'none'; // Add this line
-              section.style.position = 'absolute';
+              if (section.id !== sectionId) {
+                section.style.opacity = '0';
+                section.style.visibility = 'hidden';
+                section.classList.remove('active');
+              }
             }
             
-            // Show the selected section
-            let selectedSection = document.getElementById(sectionId);
-            selectedSection.style.display = 'block'; // Add this line
-            selectedSection.style.position = 'relative';
-            selectedSection.style.visibility = 'visible';
-            selectedSection.classList.add('active');
-            selectedSection.style.opacity = '1';
+            // Short timeout to allow the fade out to complete before repositioning
+            setTimeout(() => {
+              // Now handle display properties
+              for (let section of sections) {
+                if (section.id !== sectionId) {
+                  section.style.display = 'none';
+                  section.style.position = 'absolute';
+                } else {
+                  // Show the selected section
+                  section.style.display = 'block';
+                  section.style.position = 'relative';
+                  section.style.visibility = 'visible';
+                  section.classList.add('active');
+                  
+                  // Set opacity after a tiny delay to ensure smooth transition
+                  setTimeout(() => {
+                    section.style.opacity = '1';
+                  }, 10);
+                }
+              }
+            }, 300); // Delay slightly longer than the opacity transition
           }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            showSection('news');  // Show news section by default
-        });
         </script>
 
 </body>
