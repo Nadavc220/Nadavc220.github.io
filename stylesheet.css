@@ -458,3 +458,86 @@ button:active {
   margin: 5px 0;
   color: #333;
 }
+
+/* Mobile-specific adjustments for social icons - centered multi-line
+@media (max-width: 768px) {
+  .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .social-icon {
+    margin: 0;
+    flex: 0 0 auto;
+    transform-origin: center;
+    display: inline-flex;
+    justify-content: center;
+  }
+  
+  .social-icon img {
+    width: 28px;
+    height: 28px;
+  }
+} */
+
+
+body, html {
+  min-width: 1000px;
+  overflow-x: auto;
+}
+
+.header-container, 
+.sections-container,
+#news, 
+#publications, 
+#projects,
+#art,
+.content-section {
+  width: 1000px !important;
+  max-width: 1000px !important;
+  min-width: 1000px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* To ensure your art grid maintains the same layout */
+#art .art-grid {
+  width: 960px !important; /* 1000px minus the padding */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important; /* Force 4 columns */
+  gap: 20px;
+  padding: 20px;
+}
+
+.sections-container > div {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.sections-container table,
+.sections-container .art-grid,
+.sections-container .publication-block {
+  max-width: 1000px;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+/* Fix for news section boxes */
+.rounded-box {
+  box-sizing: border-box;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.shifted-header {
+  margin-left: 2.5%;
+}
