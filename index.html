@@ -191,42 +191,42 @@
             <!-- Image Grid -->
             <div class="art-grid">
               <div class="art-item" data-title="Dark Knight" data-description="">
-                <img src="images/art/full_size/batman.jpg" alt="Batman Art" class="thumbnail">
+                <img src="images/art/thumbnails/batman.jpg" alt="Batman Art" class="thumbnail">
               </div>
               <div class="art-item" data-title='"Abraham" after Caravaggio' data-description="A study inspired by Caravaggio's dramatic style, emphasizing the interplay of light and shadow.">
-                <img src="images/art/full_size/caravaggio.jpg" alt="Caravaggio Style Art" class="thumbnail">
+                <img src="images/art/thumbnails/caravaggio.jpg" alt="Caravaggio Style Art" class="thumbnail">
               </div>
-              <div class="art-item" data-title='Woman in Blue'' data-nsfw="true" data-description="Abstract portrait of a woman in blue tones, exploring feminine form and emotion. After @SachaLeyendeker.">
-                <img src="images/art/full_size/woman_blue.jpg" alt="Woman in Blue" class="thumbnail nsfw">
+              <div class="art-item" data-title='Woman in Blue'' data-nsfw="true" data-description="Abstract portrait of a woman in blue tones, exploring feminine form and emotion. After @SachaLeyendecker.">
+                <img src="images/art/thumbnails/woman_blue.jpg" alt="Woman in Blue" class="thumbnail nsfw">
                 <div class="art-overlay">NSFW</div>
               </div>
               <div class="art-item" data-title="Woman Sketch" data-description="A detailed portrait study of a woman, focusing on face expression.">
-                <img src="images/art/full_size/portrait_woman.jpg" alt="Portrait of Woman" class="thumbnail">
+                <img src="images/art/thumbnails/portrait_woman.jpg" alt="Portrait of Woman" class="thumbnail">
               </div>
               <div class="art-item" data-title="Jasper National Park Mountain Range" data-description="A mountain range in Jasper National Park in oil paints.">
-                <img src="images/art/full_size/edith_cavell.jpg" alt="Edith Cavell" class="thumbnail">
+                <img src="images/art/thumbnails/edith_cavell.jpg" alt="Edith Cavell" class="thumbnail">
               </div>
               <div class="art-item" data-title='"Horse Sketch" after Degas'' data-description="A detailed pencil study of a horse, showcasing movement and form.">
-                <img src="images/art/full_size/horse_pencil.jpg" alt="Horse Pencil Drawing" class="thumbnail">
+                <img src="images/art/thumbnails/horse_pencil.jpg" alt="Horse Pencil Drawing" class="thumbnail">
               </div>
-              <div class="art-item" data-title='Woman in Red'' data-nsfw="true" data-description="Figure study in red tones exploring form and composition. After @SachaLeyendeker">
-                <img src="images/art/full_size/woman_red.jpg" alt="Woman in Red" class="thumbnail nsfw">
+              <div class="art-item" data-title='Woman in Red'' data-nsfw="true" data-description="Figure study in red tones exploring form and composition. After @SachaLeyendecker">
+                <img src="images/art/thumbnails/woman_red.jpg" alt="Woman in Red" class="thumbnail nsfw">
                 <div class="art-overlay">NSFW</div>
               </div>
               <div class="art-item" data-title="Sculpture Sketch" data-description="">
-                <img src="images/art/full_size/sculpture_sketch.jpg" alt="Sculpture Sketch" class="thumbnail">
+                <img src="images/art/thumbnails/sculpture_sketch.jpg" alt="Sculpture Sketch" class="thumbnail">
               </div>
               <div class="art-item" data-title="Saitama" data-description="">
-                <img src="images/art/full_size/ConsNormPunch.jpg" alt="Dynamic Illustration" class="thumbnail">
+                <img src="images/art/thumbnails/ConsNormPunch.jpg" alt="Dynamic Illustration" class="thumbnail">
               </div>
               <div class="art-item" data-title="Danielle Pen Sketch" data-description="A sketch of Danielle searching for bears in the claude forests of Ecuador.">
-                <img src="images/art/full_size/pen_sketch.jpg" alt="Pen Sketch" class="thumbnail">
+                <img src="images/art/thumbnails/pen_sketch.jpg" alt="Pen Sketch" class="thumbnail">
               </div>
               <div class="art-item" data-title="Van-Gogh Study" data-description="A study of Van Gogh's early paintings, exploring color and brushwork.">
-                <img src="images/art/full_size/gogh.jpg" alt="Van Gogh Style" class="thumbnail">
+                <img src="images/art/thumbnails/gogh.jpg" alt="Van Gogh Style" class="thumbnail">
               </div>
               <div class="art-item" data-title="Woman Sketch" data-nsfw="true" data-description="A figure sketch study focusing on form and gesture.">
-                <img src="images/art/full_size/woman_sketch.jpg" alt="Woman Sketch" class="thumbnail nsfw">
+                <img src="images/art/thumbnails/woman_sketch.jpg" alt="Woman Sketch" class="thumbnail nsfw">
                 <div class="art-overlay">NSFW</div>
               </div>
             </div>
@@ -552,13 +552,25 @@
               document.querySelectorAll('#art .art-item').forEach(item => {
                 item.addEventListener('click', function() {
                   const img = this.querySelector('img');
+                  const fullSizeUrl = img.src.replace('/thumbnails/', '/full_size/');
                   const description = this.getAttribute('data-description');
                   const title = this.getAttribute('data-title');
                   
                   modal.style.display = 'block';
-                  modalImg.src = img.src;
+                  const modalContainer = document.querySelector('.modal-image-container');
+                  modalContainer.classList.remove('loaded'); // Remove loaded class
+                  modalImg.classList.remove('loaded');
                   modalTitle.textContent = title;
                   modalText.textContent = description;
+                  
+                  // Load the full-size image
+                  modalImg.onload = function() {
+                    setTimeout(() => {
+                      modalImg.classList.add('loaded');
+                      modalContainer.classList.add('loaded'); // Add loaded class to container
+                    }, 100);
+                  };
+                  modalImg.src = fullSizeUrl;
                 });
               });
 
