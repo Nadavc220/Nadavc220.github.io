@@ -438,8 +438,8 @@ button:active {
 }
 
 .social-icon img {
-  width: 30px;
-  height: 30px;
+  width: 40px;  /* Changed from 30px */
+  height: 40px; /* Changed from 30px */
   vertical-align: middle;
 }
 
