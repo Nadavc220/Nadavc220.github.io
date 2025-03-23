@@ -248,6 +248,36 @@ table {
   color: white;
 }
 
+.yellow-hollow-block {
+  background-color: transparent;
+  color: #ffe400;
+  border: 2px solid #ffe400;
+}
+
+.blue-hollow-block {
+  background-color: transparent;
+  color: #2945e4;
+  border: 2px solid #2945e4;
+}
+
+.green-hollow-block {
+  background-color: transparent;
+  color: #14a76c;
+  border: 2px solid #14a76c;
+}
+
+.purple-hollow-block {
+  background-color: transparent;
+  color: blueviolet;
+  border: 2px solid blueviolet;
+}
+
+.royalblue-hollow-block {
+  background-color: transparent;
+  color: #4169E1;
+  border: 2px solid #4169E1;
+}
+
 .rounded-box {
   padding: 15px;
   border-radius: 10px;
