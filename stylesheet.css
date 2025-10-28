@@ -248,6 +248,11 @@ table {
   color: white;
 }
 
+.pink-block {
+  background-color: #ed266c;
+  color: white;
+}
+
 .yellow-hollow-block {
   background-color: transparent;
   color: #ffe400;
