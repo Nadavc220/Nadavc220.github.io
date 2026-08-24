@@ -1,705 +1,495 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Importing font from google fonts for name -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nadav Z. Cohen">
+<title>Nadav Z. Cohen</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179752514-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-179752514-1');
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Nadav Cohen</title>
+<link rel="icon" type="image/png" href="images/seal_icon.png">
 
-  <meta name="author" content="Nadav Z. Cohen">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
-  <meta name="viewport" content="width=1000,  initial-scale=1">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-179752514-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-179752514-1');
+</script>
 
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="icon" type="image/png" href="images/seal_icon.png">
+<style>
+:root{
+  --ground:#fbfaf7;        /* bright paper */
+  --ground-soft:#ffffff;   /* raised card surface */
+  --paper:#1a1815;         /* near-black ink text */
+  --paper-dim:#6b655c;     /* muted body */
+  --line:#e7e3da;          /* hairline */
+  /* pigment accents, used as a section filing system — bright & poppy */
+  --pig-news:#f2a03d;      /* marigold */
+  --pig-pub:#1fb583;       /* jade */
+  --pig-proj:#3d7ff2;      /* cobalt */
+  --pig-art:#f0507a;       /* punch pink */
+  --accent:var(--pig-news);
+  --display:"Fraunces",Georgia,serif;
+  --body:"Space Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ground);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* subtle grain / vignette so the dark ground feels like canvas, not a void */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(120% 80% at 50% -10%, rgba(242,160,61,.12), transparent 55%);
+}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;z-index:1;padding:70px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.7fr .55fr;gap:52px;align-items:center}
+.eyebrow{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--accent)}
+.hero h1{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(48px,7.2vw,92px);
+  line-height:.94;
+  letter-spacing:-.02em;
+  margin-bottom:26px;
+}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+.lede{font-size:17px;color:var(--paper-dim);max-width:52ch;margin-bottom:14px}
+.lede strong{color:var(--paper);font-weight:600}
+.lede a{color:var(--paper);border-bottom:1px solid var(--accent);transition:color .2s}
+.lede a:hover{color:var(--accent)}
+
+.portrait{position:relative;max-width:240px;justify-self:end}
+.portrait img{
+  width:100%;border-radius:6px;
+  filter:contrast(1.02);
+  box-shadow:0 18px 40px rgba(26,24,21,.16);
+}
+.portrait::after{
+  content:"";position:absolute;inset:12px -12px -12px 12px;border:1px solid var(--accent);
+  border-radius:6px;z-index:-1;opacity:.5;transition:border-color .3s;
+}
+
+/* socials */
+.socials{display:flex;gap:8px;margin-top:26px;flex-wrap:wrap}
+.socials a{
+  width:42px;height:42px;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--line);background:var(--ground-soft);
+  box-shadow:0 2px 6px rgba(26,24,21,.05);
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.socials a:hover{transform:translateY(-3px);border-color:var(--accent);background:#fff6ea}
+.socials img{width:19px;height:19px;filter:invert(18%) sepia(6%) saturate(400%) hue-rotate(3deg);opacity:.8}
+
+/* ---------- NAV ---------- */
+nav{
+  position:sticky;top:0;z-index:20;
+  background:rgba(251,250,247,.85);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;gap:6px;max-width:1080px;margin:0 auto;padding:0 20px}
+.nav-btn{
+  font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--paper-dim);background:none;border:none;cursor:pointer;
+  padding:18px 20px;position:relative;transition:color .2s;
+}
+.nav-btn:hover{color:var(--paper)}
+.nav-btn.active{color:var(--paper)}
+.nav-btn::after{
+  content:"";position:absolute;left:20px;right:20px;bottom:0;height:2px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+}
+.nav-btn.active::after{transform:scaleX(1)}
+
+/* ---------- SECTIONS ---------- */
+main{position:relative;z-index:1;padding:64px 0 40px;min-height:60vh}
+.section{display:none;animation:rise .5s ease both}
+.section.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.section-head{
+  display:flex;align-items:baseline;gap:16px;margin-bottom:34px;
+}
+.section-head h2{
+  font-family:var(--display);font-weight:900;font-size:clamp(30px,4vw,46px);letter-spacing:-.015em;
+}
+.section-head .count{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.1em}
+.subhead{
+  font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--paper-dim);margin:52px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+
+/* ---------- NEWS (timeline) ---------- */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.entry{position:relative;padding:0 0 26px 0}
+.entry::before{
+  content:"";position:absolute;left:-24px;top:9px;width:9px;height:9px;border-radius:50%;
+  background:var(--ground);border:2px solid var(--dot,var(--accent));transition:transform .2s;
+}
+.entry:hover::before{transform:scale(1.4)}
+.entry .date{font-family:var(--mono);font-size:12.5px;color:var(--dot,var(--accent));letter-spacing:.04em}
+.entry p{color:var(--paper);font-size:16px;margin-top:2px}
+
+.talks-list,.teaching-list{display:grid;gap:10px}
+.pill{
+  border:1px solid var(--line);border-left:3px solid var(--pill,var(--accent));
+  border-radius:4px;padding:13px 18px;font-size:15px;color:var(--paper-dim);
+  transition:background .2s,color .2s;background:var(--ground-soft);
+}
+.pill:hover{background:#fdfcfa;color:var(--paper)}
+.pill .k{font-family:var(--mono);font-size:12px;color:var(--pill,var(--accent));margin-right:10px}
+
+/* ---------- PUBLICATIONS ---------- */
+.pub{
+  display:grid;grid-template-columns:420px 1fr;gap:30px;align-items:center;
+  padding:26px;margin-bottom:22px;border:1px solid var(--line);border-radius:8px;
+  background:var(--ground-soft);position:relative;overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.pub::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--venue,var(--accent))}
+.pub:hover{transform:translateY(-4px);border-color:var(--venue,var(--accent));box-shadow:0 14px 34px rgba(26,24,21,.1)}
+.pub-img{border-radius:5px;overflow:hidden;background:#f0ede6}
+.pub-img img{width:100%;height:auto;display:block}
+.venue{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--venue,var(--accent));margin-bottom:8px;
+}
+.pub h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.2;margin-bottom:12px;letter-spacing:-.01em}
+.authors{font-size:14.5px;color:var(--paper-dim);margin-bottom:16px}
+.authors a{color:var(--paper);transition:color .2s}
+.authors a:hover{color:var(--venue,var(--accent))}
+.authors .me{color:var(--venue,var(--accent));font-weight:600}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{
+  font-family:var(--mono);font-size:12.5px;padding:7px 14px;border-radius:20px;
+  border:1px solid var(--line);color:var(--paper-dim);transition:all .2s;
+}
+.links a:hover{border-color:var(--venue,var(--accent));color:var(--paper);background:#f6f4ef}
+
+/* ---------- PROJECTS ---------- */
+.project{
+  display:grid;grid-template-columns:280px 1fr;gap:0;border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;background:var(--ground-soft);
+  transition:transform .3s ease,border-color .3s ease;
+}
+.project:hover{transform:translateY(-4px);border-color:var(--pig-proj);box-shadow:0 14px 34px rgba(26,24,21,.1)}
+.project img{width:100%;height:100%;object-fit:cover;min-height:180px}
+.project .body{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.project .date{font-family:var(--mono);font-size:12px;color:var(--pig-proj);letter-spacing:.1em;margin-bottom:10px}
+.project h3{font-family:var(--display);font-weight:600;font-size:22px;margin-bottom:10px}
+.project p{color:var(--paper-dim);font-size:15px}
+
+/* ---------- ART ---------- */
+.art-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:26px}
+.toggle{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-dim)}
+.switch{position:relative;width:46px;height:26px}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:var(--line);border-radius:26px;cursor:pointer;transition:.3s}
+.slider::before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;background:var(--paper);border-radius:50%;transition:.3s}
+input:checked + .slider{background:var(--pig-art)}
+input:checked + .slider::before{transform:translateX(20px)}
+
+.art-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.art-item{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;cursor:pointer}
+.art-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .3s ease}
+.art-item:hover img{transform:scale(1.06)}
+.art-item .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 12px 12px;
+  background:linear-gradient(transparent,rgba(0,0,0,.85));
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--paper);
+  opacity:0;transform:translateY(6px);transition:.3s;
+}
+.art-item:hover .cap{opacity:1;transform:none}
+.art-item .nsfw-tag{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--paper);
+  border:1px solid var(--paper);padding:5px 10px;border-radius:3px;pointer-events:none;
+}
+.art-item img.nsfw{filter:blur(14px)}
+
+/* modal */
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(28,26,22,.55);backdrop-filter:blur(4px)}
+.modal.open{display:grid;place-items:center;padding:32px}
+.modal-box{display:grid;grid-template-columns:1fr 300px;gap:28px;max-width:1000px;max-height:88vh;align-items:center}
+.modal-box img{max-height:82vh;border-radius:5px;object-fit:contain}
+.modal-info{background:var(--ground-soft);padding:26px;border-radius:8px;box-shadow:0 20px 50px rgba(26,24,21,.25)}
+.modal-info h3{font-family:var(--display);font-style:italic;font-weight:500;font-size:30px;margin-bottom:16px;color:var(--paper)}
+.modal-info p{color:var(--paper-dim);font-size:15.5px;line-height:1.7}
+.modal-close{position:fixed;top:18px;right:26px;width:44px;height:44px;font-size:30px;color:var(--paper);cursor:pointer;line-height:1;background:var(--ground-soft);border:1px solid var(--line);border-radius:50%;box-shadow:0 4px 12px rgba(26,24,21,.2)}
+
+/* ---------- FOOTER ---------- */
+footer{
+  position:relative;z-index:1;border-top:1px solid var(--line);margin-top:70px;
+  padding:34px 0;text-align:center;color:var(--paper-dim);font-size:13.5px;
+}
+footer .sig{font-family:var(--display);font-style:italic;font-size:17px;color:var(--paper);margin-bottom:6px}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:820px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .portrait{max-width:340px}
+  .pub,.project{grid-template-columns:1fr}
+  .art-grid{grid-template-columns:repeat(2,1fr)}
+  .modal-box{grid-template-columns:1fr;overflow-y:auto}
+  .nav-inner{overflow-x:auto}
+  .nav-btn{white-space:nowrap;padding:16px 14px}
+}
+@media (max-width:480px){
+  .art-grid{grid-template-columns:1fr}
+  .wrap{padding:0 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto}
+}
+</style>
 </head>
-
 <body>
-  <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <div class="header-container">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <div class=name style="text-align: center; font-family: 'Reenie Beanie', serif; font-size: 60px; font-weight: bold;">Nadav Z. Cohen</div>
-              <p style="font-size: 17px">I'm a Computer Science Ph.D. student at Reichman University, working under the supervision of <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank" style="font-size: 17px;">Prof. Ariel Shamir</a>.</p>
-              <p style="font-size: 17px">My research focuses on generative models for 2D and 3D applications, with a particular interest in developing algorithm-driven art forms and advancing 3D tools for the game and animation industries.</p>
-              <p style="font-size: 17px">Beyond research, I enjoy painting, nature photography, gaming, and spending time with family and friends.</p>
-              <p style="font-size: 17px">I am currently a Visiting Researcher in the <a href="https://www-ui.is.s.u-tokyo.ac.jp/en/" target="_blank" style="font-size: 17px;">IGARASHI Lab</a> at the University of Tokyo, Japan, collaborating with I-Chao Shen and Takeo Igarashi.</p>
-              
-              <p style="text-align:center">
-                <div class="social-icons">
-                  <a href="mailto:nadavc220@gmail.com" class="social-icon" title="Email">
-                    <img src="images/icons/mail.png" alt="Email">
-                  </a>
-                  <a href="https://github.com/Nadavc220" class="social-icon" title="Github">
-                    <img src="images/icons/github.png" alt="Github">
-                  </a>
-                  <a href="https://www.linkedin.com/in/nadavc220/" class="social-icon" title="LinkedIn">
-                    <img src="images/icons/linkedin.png" alt="LinkedIn">
-                  </a>
-                  <a href="https://scholar.google.com/citations?hl=iw&user=fq-Ja3wAAAAJ" class="social-icon" title="Google Scholar">
-                    <img src="images/icons/scholar.png" alt="Google Scholar">
-                  </a>
-                  <a href="https://x.com/nadavc220" class="social-icon" title="X (Twitter)">
-                    <img src="images/icons/x.png" alt="X">
-                  </a>
-                  <a href="https://www.instagram.com/nadavc220/" class="social-icon" title="Instagram">
-                    <img src="images/icons/instagram.png" alt="Instagram">
-                  </a>
-                </a>
-                <a href="https://500px.com/p/nadavc220" class="social-icon" title="500px">
-                  <img src="images/icons/500px.png" alt="500px">
-                </a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <a href="images/profile.jpg"><img style="width:100%;max-width:100%" alt="Nadav Cohen" src="images/profile.jpg" class="hoverZoomLink"></a>
-            </td>
-          </tbody></table>
-          <!-- <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody> -->
 
-          <!-- Navigation Buttons -->
-          <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
-            <button class="nav-button" onclick="showSection('news')">News</button>
-            <button class="nav-button" onclick="showSection('publications')">Publications</button>
-            <button class="nav-button" onclick="showSection('projects')">Projects</button>
-            <button class="nav-button" onclick="showSection('art')">Art</button>
-            
-          </div>
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Computer Science · Ph.D.</div>
+      <h1>Nadav Z.<br><em>Cohen</em></h1>
+      <p class="lede">Ph.D. student at Reichman University with <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">Prof. Ariel Shamir</a>. I build <strong>generative models for 2D and 3D</strong> — algorithm-driven art forms and better tools for the game and animation industries.</p>
+      <p class="lede">Currently I'm interning at Adobe in Seattle as a Research Scientist in the Creative Intelligence group, mentored by Aharon Hertzman and Eli Shechtman. Previously, I was a Visiting Researcher in the <a href="https://www-ui.is.s.u-tokyo.ac.jp/en/" target="_blank">IGARASHI Lab</a> at the University of Tokyo, working with I-Chao Shen and Takeo Igarashi.</p>
+      <p class="lede">Off-screen: painting, nature photography, gaming, and time with family and friends.</p>
+      <div class="socials">
+        <a href="mailto:nadavc220@gmail.com" title="Email"><img src="images/icons/mail.png" alt="Email"></a>
+        <a href="https://github.com/Nadavc220" target="_blank" title="GitHub"><img src="images/icons/github.png" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/nadavc220/" target="_blank" title="LinkedIn"><img src="images/icons/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://scholar.google.com/citations?hl=iw&user=fq-Ja3wAAAAJ" target="_blank" title="Google Scholar"><img src="images/icons/scholar.png" alt="Scholar"></a>
+        <a href="https://x.com/nadavc220" target="_blank" title="X"><img src="images/icons/x.png" alt="X"></a>
+        <a href="https://www.instagram.com/nadavc220/" target="_blank" title="Instagram"><img src="images/icons/instagram.png" alt="Instagram"></a>
+        <a href="https://500px.com/p/nadavc220" target="_blank" title="500px"><img src="images/icons/500px.png" alt="500px"></a>
+      </div>
+    </div>
+    <div class="portrait">
+      <a href="images/profile.jpg"><img src="images/profile.jpg" alt="Nadav Cohen"></a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" data-target="news" data-accent="--pig-news">News</button>
+    <button class="nav-btn" data-target="publications" data-accent="--pig-pub">Publications</button>
+    <button class="nav-btn" data-target="projects" data-accent="--pig-proj">Projects</button>
+    <button class="nav-btn" data-target="art" data-accent="--pig-art">Art</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- NEWS -->
+  <section id="news" class="section active">
+    <div class="section-head"><h2>News</h2><span class="count">recent</span></div>
+    <div class="timeline">
+      <div class="entry" style="--dot:var(--pig-art)"><div class="date">Aug 2026</div><p>Many-Videos Browsing accepted to <strong>SIGGRAPH Asia 2026</strong> 🦧 🌴 🤿</p></div>
+      <div class="entry" style="--dot:var(--pig-pub)"><div class="date">Jun 2026</div><p>Joined <strong>Adobe</strong> in Seattle for a summer internship, mentored by Aharon Hertzman and Eli Shechtman 🦦 🏔️ 🐋</p></div>
+      <div class="entry" style="--dot:blueviolet"><div class="date">Apr 2026</div><p>Colorful-Noise accepted to <strong>SIGGRAPH 2026</strong> 🎥 🌌 🧙</p></div>
+      <div class="entry" style="--dot:var(--pig-art)"><div class="date">Oct 2025</div><p>Started a Visiting Researcher position at the <strong>University of Tokyo</strong> 🇯🇵 🦌</p></div>
+      <div class="entry" style="--dot:var(--pig-proj)"><div class="date">Feb 2025</div><p>"Conditional Balance: Improving Multi-Conditioning Trade-Offs in Image Generation" accepted to <strong>CVPR 2025</strong> 🎉 🧝 🐈</p></div>
+      <div class="entry" style="--dot:var(--pig-art)"><div class="date">Apr 2024</div><p>Officially started my <strong>Ph.D.</strong> at Reichman University.</p></div>
+      <div class="entry" style="--dot:blueviolet"><div class="date">May 2022</div><p>M.Sc. thesis "Understanding Art Paintings with Algorithms" selected for the graduation ceremony.</p></div>
+      <div class="entry" style="--dot:var(--pig-news)"><div class="date">Feb 2022</div><p>Semantic Segmentation in Art Paintings accepted to <strong>Eurographics</strong>.</p></div>
+      <div class="entry" style="--dot:var(--pig-pub)"><div class="date">Dec 2021</div><p>Completed my M.Sc. (Magna Cum Laude) at the Hebrew University.</p></div>
+      <div class="entry" style="--dot:var(--pig-proj)"><div class="date">Mar 2019</div><p>Started my M.Sc. at the Hebrew University of Jerusalem.</p></div>
+    </div>
+
+    <div class="subhead">Upcoming Talks</div>
+    <div class="talks-list">
+      <div class="pill" style="--pill:var(--pig-pub)"><span class="k">Jul 2026</span>Presenting "Colorful-Noise" at SIGGRAPH 2026, Los Angeles.</div>
+      <div class="pill" style="--pill:var(--pig-art)"><span class="k">Jun 2026</span>Presenting "Colorful-Noise" at the Canvas-Lab Seminar, Reichman University.</div>
+      <div class="pill" style="--pill:blueviolet"><span class="k">Apr 2025</span>Presenting "Conditional Balance" at the Visual Computing Seminar, Tel-Aviv University.</div>
+      <div class="pill" style="--pill:var(--pig-proj)"><span class="k">Apr 2025</span>Presenting "Conditional Balance" at Microsoft Data-Science, Bond.</div>
+    </div>
+
+    <div class="subhead">Teaching</div>
+    <div class="teaching-list">
+      <div class="pill" style="--pill:blueviolet"><span class="k">Fall 2026</span>Introduction to Generative Models and Computational Creativity — Lecturer & Course Creator, Reichman University.</div>
+      <div class="pill" style="--pill:var(--pig-art)"><span class="k">Spr 25–27</span>Introduction to Computer Graphics — TA, Reichman University.</div>
+      <div class="pill" style="--pill:var(--pig-pub)"><span class="k">Fall 2024</span>Introduction to Computer Science — TA, Reichman University.</div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="section">
+    <div class="section-head"><h2>Publications</h2><span class="count">03</span></div>
+
+    <article class="pub" style="--venue:blueviolet">
+      <div class="pub-img"><img src="images/teasers/Picture1.png" alt="Colorful-Noise teaser"></div>
+      <div>
+        <div class="venue">SIGGRAPH 2026</div>
+        <h3>Colorful-Noise: Training-Free Low-Frequency Noise Manipulation for Color-Based Conditional Image Generation</h3>
+        <div class="authors"><span class="me">Nadav Z. Cohen</span>, <a href="https://ofir1080.github.io/personal-webpage/" target="_blank">Ofir Abramovich</a>, <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">Ariel Shamir</a></div>
+        <div class="links">
+          <a href="https://nadavc220.github.io/colorful-noise/" target="_blank">Project</a>
+          <a href="https://arxiv.org/abs/2605.00548" target="_blank">arXiv</a>
+          <a href="https://arxiv.org/abs/2605.00548" target="_blank">Code</a>
         </div>
+      </div>
+    </article>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-        <!-- Sections -->
-        <div class="sections-container">
-          <div id="news" class="content-section active" style="opacity: 1; display: block;">
-            <h1 class="shifted-header">News</h1>
-            <p class="rounded-box pink-block" style="font-size: 20px;">[August 2026] Many-Videos Browsing has been accepted to SIGGRAPH Asia 2026! 🦧 🌴 🤿</p>
-            <p class="rounded-box green-block" style="font-size: 20px;">[June 2026] I've joined Adobe in Seattle for a summer internship mentored by Aharon Hertzman and Eli Shechtman 🦦 🏔️ 🐋</p>
-            <p class="rounded-box purple-block" style="font-size: 20px;">[April 2026] Colorful-Noise has be accepted to SIGGRAPH 2026! &#127909; &#127796; &#129361;</p>
-            <p class="rounded-box pink-block" style="font-size: 20px;">[October 2025] I’ve started a Visiting Researcher position at the University of Tokyo, Japan. &#127471;&#127477;&#x1f5fb;🦌. </p>
-            <p class="rounded-box blue-block" style="font-size: 20px;">[February 2025] Our latest paper: "Conditional Balance: Improving Multi-Conditioning Trade-Offs in Image Generation" has been accepted to CVPR 2025! &#127881; &#129497; &#128049;. </p>
-            <p class="rounded-box red-block" style="font-size: 20px;">[April 2024] I've officialy started my Ph.D. in Reichman University. </p>
-            <p class="rounded-box purple-block" style="font-size: 20px;">[May 2022] My M.Sc. thesis 'Understanding Art Paintings with Algorithms' was chosen for presentation at the MS.c. graduation ceremony!</p>
-            <p class="rounded-box yellow-block" style="font-size: 20px;">[February 2022] Semantic Segmentation in Art Paintings has been accepted to Eurographics! </p>
-            <p class="rounded-box green-block" style="font-size: 20px;">[December 2021] I've completed my M.Sc. degree (Magna Cum Laude) from the Hebrew University.</p>
-            <p class="rounded-box blue-block" style="font-size: 20px;">[March 2019] I've officialy started my MS.c in The Hebrew University of Jerusalem.</p>
-            <!-- <div id="news" class="content-section active" style="opacity: 1; display: block;">
-              <h1 class="shifted-header">Upcoming Talks</h1>
-              <p class="rounded-box blue-block" style="font-size: 20px;">[April 2025] Microsoft Bond </p> -->
-            <h1 class="shifted-header" style="margin-top: 60px;">Upcoming Talks</h1>
-            <p class="rounded-box green-hollow-block" style="font-size: 20px;">[July 2026] Presenting "Colorful-Noise" at SIGGRAPH 2026 in Los Angeles. </p>
-            <p class="rounded-box red-hollow-block" style="font-size: 20px;">[June 2026] Presenting "Colorful-Noise" at the Canvas-Lab Seminar. Reichman University, Israel. </p>
-            <p class="rounded-box purple-hollow-block" style="font-size: 20px;">[April 2025] Presenting "Conditional Balance" at the Visual Computing Seminar in Tel-Aviv University. Israel. </p>
-            <p class="rounded-box royalblue-hollow-block" style="font-size: 20px;">[April 2025] Presenting "Conditional Balance" at Microsoft Data-Science Bond. Israel. </p>
-
-            <h1 class="shifted-header" style="margin-top: 60px;">Teaching</h1>
-            <p class="rounded-box purple-hollow-block" style="font-size: 20px;">Introduction to Generative Models and Computational Creativity (Lecturer and Course Creator). Reichman University. Fall 2026 </p>
-            <p class="rounded-box red-hollow-block" style="font-size: 20px;">Introduction to Computer Graphics (TA). Reichman University. Spring 2025, 2026, 2027 </p>
-            <p class="rounded-box green-hollow-block" style="font-size: 20px;">Introduction to Computer Science (TA). Reichman University. Fall 2024 </p>
-          </div>
-
-          <div id="publications" class="content-section"style="display: none;">
-            <h1 class="shifted-header">Publications</h1>
-             
-             <!-- Colorful-Noise  -->
-              <body>
-
-                <div class="publication-block purple-block">
-                    <div class="paper-title">Colorful-Noise:<br>Training-Free Low-Frequency Noise Manipulation<br>for Color-Based Conditional Image Generation</div>
-                    <div class="paper-subtitle" style="color: white;"><em>SIGGRAPH 2026</em></div>
-                    <img class="paper-image" src="images/teasers/Picture1.png" alt="Example GIF">
-            
-                    <div class="collaborators">
-                        <div class="collaborator">
-                            <img src="images/profile_icon.jpg" alt="Nadav Cohen">
-                            <p>Nadav Cohen</p>
-                        </div>
-                        <div class="collaborator">
-                          <a href="https://ofir1080.github.io/personal-webpage/" target="_blank" style="color: #1edb90;">
-                            <img src="images/collaborators_icons/ofir.jpeg" alt="Ofir Abramovich">
-                            <p>Ofir Abramovich</p>
-                          </a>
-                        </div>
-                        <div class="collaborator">
-                          <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank" style="color: #1edb90;">
-                            <img src="images/collaborators_icons/arik.png" alt="Ariel Shamir">
-                            <p>Ariel Shamir</p>
-                          </a>
-                        </div>
-                    </div>
-            
-                    <div class="paper-info">
-                        <a href="https://nadavc220.github.io/colorful-noise/" style="color: #1edb90;">Project Page</a>
-                        <a href="https://arxiv.org/abs/2605.00548" style="color: #1edb90;">ArXiv</a>
-                        <a href="https://arxiv.org/abs/2605.00548" style="color: #1edb90;">Code</a>
-                    </div>
-                </div>
-            
-            </body>
-
-            <!-- Conditional Balance  -->
-              <body>
-                <div class="publication-block green-block">
-                    <div class="paper-title">Conditional Balance:<br> Improving Multi-Conditioning Trade-Offs in Image Generation</div>
-                    <div class="paper-subtitle" style="color: white;"><em>CVPR 2025</em></div>
-                    <img class="paper-image" src="images/teasers/temp_teaser.png" alt="Example GIF">
-            
-                    <div class="collaborators">
-                        <div class="collaborator">
-                            <img src="images/profile_icon.jpg" alt="Nadav Cohen">
-                            <p>Nadav Cohen</p>
-                        </div>
-                        <div class="collaborator">
-                          <a href="https://www.linkedin.com/in/oronnir/" target="_blank" style="color: blueviolet;">
-                            <img src="images/collaborators_icons/oron.jpeg" alt="Oron Nir">
-                            <p>Oron Nir</p>
-                          </a>
-                        </div>
-                        <div class="collaborator">
-                          <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank" style="color: blueviolet;">
-                            <img src="images/collaborators_icons/arik.png" alt="Ariel Shamir">
-                            <p>Ariel Shamir</p>
-                          </a>
-                        </div>
-                    </div>
-            
-                    <div class="paper-info">
-                        <a href="https://nadavc220.github.io/conditional-balance.github.io/" style="color: blueviolet;">Project Page</a>
-                        <a href="https://arxiv.org/abs/2412.19853" style="color: blueviolet;">ArXiv</a>
-                        <a href="https://github.com/Nadavc220/conditional-balance" style="color: blueviolet;">Code</a>
-                    </div>
-                </div>
-            
-            </body>
-
-              <!-- Semantic Segmentation in Art Paintings  -->
-              <body>
-
-                <div class="publication-block yellow-block">
-                    <div class="paper-title">Semantic Segmentation in Art Paintings</div>
-                    <div class="paper-subtitle"><em>Eurographics 2022</em></div>
-                    <img class="paper-image" src="images/teasers/ssiap.jpg" alt="Example GIF">
-            
-                    <div class="collaborators">
-                        <div class="collaborator">
-                            <img src="images/profile_icon.jpg" alt="Nadav Cohen">
-                            <p>Nadav Cohen</p>
-                        </div>
-                        <div class="collaborator">
-                          <a href="https://www.linkedin.com/in/yael-newman-34228b79/" target="_blank">
-                            <img src="images/collaborators_icons/yael.png" alt="Yael Newman">
-                            <p>Yael Newman</p>
-                          </a>
-                        </div>
-                        <div class="collaborator">
-                          <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">
-                            <img src="images/collaborators_icons/arik.png" alt="Ariel Shamir">
-                            <p>Ariel Shamir</p>
-                          </a>
-                        </div>
-                    </div>
-            
-                    <div class="paper-info">
-                        <a href="https://nadavc220.github.io/ssiap">Project Page</a>
-                        <a href="https://arxiv.org/abs/2203.03238">ArXiv</a>
-                        <a href="https://github.com/nadavc220/semanticsegmentationinartpaintings">Code</a>
-                    </div>
-                </div>
-            
-            </body>
-          </div>
-
-          <div id="art" class="content-section" style="display:none;">
-            <div class="header-container">
-              <h1 class="shifted-header">Paintings</h1>
-              <div class="nsfw-toggle">
-                <label class="switch">
-                  <input type="checkbox" id="nsfwToggle">
-                  <span class="slider"></span>
-                </label>
-                <span>Show NSFW Content</span>
-              </div>
-            </div>
-          
-            <!-- Image Grid -->
-            <div class="art-grid">
-              <div class="art-item" data-title="Portrait Oil Study" data-description="A realistic oil paint study, portrait of a woman. After James Gurney.">
-                <img src="images/art/thumbnails/gurney_portrait_0.jpg" alt="Portrait Oil Study" class="thumbnail">
-              </div>
-              <div class="art-item" data-title="Leopard Sketch" data-description="A detailed pencil sketch of a leopard.">
-                <img src="images/art/thumbnails/leopard.jpg" alt="Leopard Sketch" class="thumbnail">
-              </div>
-              <div class="art-item" data-title="Dark Knight" data-description='A black marker sketch of the Batman as portrait by Robert Pattinson in the 2022 Matthew Reeves movie "The Batman".'>
-                <img src="images/art/thumbnails/batman.jpg" alt="Batman Art" class="thumbnail">
-              </div>
-              <div class="art-item" data-title='"Abraham" after Caravaggio' data-description="A study inspired by Caravaggio's dramatic style, emphasizing the interplay of light and shadow.">
-                <img src="images/art/thumbnails/caravaggio.jpg" alt="Caravaggio Style Art" class="thumbnail">
-              </div>
-              <div class="art-item" data-title='Woman in Blue'' data-nsfw="true" data-description="Abstract portrait of a woman in blue tones, exploring feminine form and emotion. After @SachaLeyendecker.">
-                <img src="images/art/thumbnails/woman_blue.jpg" alt="Woman in Blue" class="thumbnail nsfw">
-                <div class="art-overlay">NSFW</div>
-              </div>
-              <div class="art-item" data-title="Woman Sketch" data-description="A detailed portrait study of a woman, focusing on face expression.">
-                <img src="images/art/thumbnails/portrait_woman.jpg" alt="Portrait of Woman" class="thumbnail">
-              </div>
-              <div class="art-item" data-title="Jasper National Park Mountain Range" data-description="A mountain range in Jasper National Park in oil paints.">
-                <img src="images/art/thumbnails/edith_cavell.jpg" alt="Edith Cavell" class="thumbnail">
-              </div>
-              <div class="art-item" data-title='"Horse Sketch" after Degas'' data-description="A detailed pencil study of a horse, showcasing movement and form.">
-                <img src="images/art/thumbnails/horse_pencil.jpg" alt="Horse Pencil Drawing" class="thumbnail">
-              </div>
-              <div class="art-item" data-title='Woman in Red'' data-nsfw="true" data-description="Figure study in red tones exploring form and composition. After @SachaLeyendecker">
-                <img src="images/art/thumbnails/woman_red.jpg" alt="Woman in Red" class="thumbnail nsfw">
-                <div class="art-overlay">NSFW</div>
-              </div>
-              <div class="art-item" data-title="Sculpture Sketch" data-description="">
-                <img src="images/art/thumbnails/sculpture_sketch.jpg" alt="Sculpture Sketch" class="thumbnail">
-              </div>
-              <div class="art-item" data-title="Saitama" data-description="">
-                <img src="images/art/thumbnails/ConsNormPunch.jpg" alt="Dynamic Illustration" class="thumbnail">
-              </div>
-              <div class="art-item" data-title="Danielle Pen Sketch" data-description="A sketch of Danielle searching for bears in the claude forests of Ecuador.">
-                <img src="images/art/thumbnails/pen_sketch.jpg" alt="Pen Sketch" class="thumbnail">
-              </div>
-              <div class="art-item" data-title="Van-Gogh Study" data-description="A study of Van Gogh's early paintings, exploring color and brushwork.">
-                <img src="images/art/thumbnails/gogh.jpg" alt="Van Gogh Style" class="thumbnail">
-              </div>
-              <div class="art-item" data-title="Woman Sketch" data-nsfw="true" data-description="A figure sketch study focusing on form and gesture.">
-                <img src="images/art/thumbnails/woman_sketch.jpg" alt="Woman Sketch" class="thumbnail nsfw">
-                <div class="art-overlay">NSFW</div>
-              </div>
-            </div>
-          
-            <!-- Modal -->
-            <div id="imageModal" class="modal">
-              <span class="close">&times;</span>
-              <div class="modal-container">
-                <div class="modal-image-container">
-                  <img class="modal-content" id="modalImage">
-                </div>
-                <div class="modal-description">
-                  <h2 class="modal-title"></h2>
-                  <p class="modal-text"></p>
-                </div>
-              </div>
-            </div>
-          
-            <style>
-              #art .header-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 20px;
-                max-width: 1000px;
-                margin: 0 auto;
-              }
-          
-              #art .nsfw-toggle {
-                display: flex;
-                align-items: center;
-              }
-          
-              #art .art-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 20px;
-                padding: 20px;
-                max-width: 1000px;
-                margin: 0 auto;
-              }
-          
-              #art .art-item {
-                position: relative;
-                width: 100%;
-                padding-bottom: 100%; /* Creates a 1:1 aspect ratio */
-                cursor: pointer;
-                overflow: hidden;
-                border-radius: 8px;
-                transition: transform 0.3s ease;
-              }
-          
-              #art .art-item:hover {
-                transform: scale(1.02);
-              }
-          
-              #art .thumbnail {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: filter 0.3s;
-              }
-          
-              #art .nsfw {
-                filter: blur(10px);
-              }
-          
-              #art .art-overlay {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(0, 0, 0, 0.7);
-                color: white;
-                padding: 5px 10px;
-                border-radius: 4px;
-                pointer-events: none;
-              }
-          
-              /* Modal styles */
-              #art .modal {
-                display: none;
-                position: fixed;
-                z-index: 1000;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.9);
-              }
-
-              #art .modal-container {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                display: flex;
-                gap: 15px;
-                align-items: flex-start;
-                width: 90%;
-                max-height: 90vh;
-              }
-
-              #art .modal-container {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                display: flex;
-                gap: 15px;
-                align-items: flex-start;
-                justify-content: center; /* Added to center the content */
-                width: 90%;
-                max-height: 90vh;
-              }
-
-              #art .modal-image-container {
-                flex: 0 1 auto;
-                max-width: 60%;
-                height: 80vh;
-                display: flex;
-                align-items: center;
-                justify-content: center; /* Changed to center */
-              }
-
-              #art .modal-content {
-                max-width: 100%;
-                max-height: 80vh;
-                object-fit: contain;
-                width: auto;
-                height: auto;
-              }
-
-              #art .modal-description {
-                flex: 0 0 280px;
-                color: white;
-                padding: 25px;
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 8px;
-                margin-top: 0;
-                overflow-y: auto;
-                max-height: 80vh;
-              }
-
-            #art .modal-title {
-              font-size: 2.5rem;
-              font-style: italic;
-              margin-bottom: 20px;
-              font-weight: 500;
-              color: white;
-            }
-
-            #art .modal-text {
-              font-size: 1.2rem;
-              line-height: 1.6;
-              color: white;
-            }
-
-            #art .close {
-              position: absolute;
-              right: 25px;
-              top: 10px;
-              color: #f1f1f1;
-              font-size: 40px;
-              font-weight: bold;
-              cursor: pointer;
-              z-index: 1001;
-            }
-
-            @media (max-width: 768px) {
-              #art .modal-container {
-                flex-direction: column;
-                align-items: center;
-                overflow-y: auto;
-                height: 100%;
-                gap: 20px;
-              }
-
-              #art .modal-image-container {
-                max-width: 90%;
-                height: auto;
-              }
-
-              #art .modal-content {
-                max-height: 60vh;
-              }
-
-              #art .modal-description {
-                flex: none;
-                width: 90%;
-                max-height: none;
-              }
-            }
-
-
-              #art .modal-title {
-                font-size: 28px;
-                font-style: italic;
-                margin-bottom: 15px;
-                font-weight: 500;
-              }
-
-              #art .modal-text {
-                font-size: 18px;
-                line-height: 1.6;
-              }
-          
-              #art .close {
-                position: absolute;
-                right: 25px;
-                top: 10px;
-                color: #f1f1f1;
-                font-size: 40px;
-                font-weight: bold;
-                cursor: pointer;
-                z-index: 1001;
-              }
-          
-              /* NSFW Toggle Switch */
-              #art .switch {
-                position: relative;
-                display: inline-block;
-                width: 60px;
-                height: 34px;
-                margin-right: 10px;
-              }
-          
-              #art .switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-              }
-          
-              #art .slider {
-                position: absolute;
-                cursor: pointer;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: #ccc;
-                transition: .4s;
-                border-radius: 34px;
-              }
-          
-              #art .slider:before {
-                position: absolute;
-                content: "";
-                height: 26px;
-                width: 26px;
-                left: 4px;
-                bottom: 4px;
-                background-color: white;
-                transition: .4s;
-                border-radius: 50%;
-              }
-          
-              #art input:checked + .slider {
-                background-color: #2196F3;
-              }
-          
-              #art input:checked + .slider:before {
-                transform: translateX(26px);
-              }
-          
-              @media (max-width: 768px) {
-                #art .modal-container {
-                  flex-direction: column;
-                }
-          
-                #art .modal-content {
-                  max-width: 90vw;
-                  max-height: 60vh;
-                }
-          
-                #art .modal-description {
-                  max-width: 90vw;
-                }
-              }
-            </style>
-          
-            <script>
-              // Prevent right-click on images
-              document.addEventListener('contextmenu', function(e) {
-                if (e.target.tagName === 'IMG') {
-                  e.preventDefault();
-                }
-              });
-          
-              // NSFW Toggle
-              const nsfwToggle = document.getElementById('nsfwToggle');
-              nsfwToggle.addEventListener('change', function() {
-                const nsfwImages = document.querySelectorAll('#art .nsfw');
-                const nsfwOverlays = document.querySelectorAll('#art .art-overlay');
-                
-                nsfwImages.forEach(img => {
-                  if (this.checked) {
-                    img.style.filter = 'none';
-                  } else {
-                    img.style.filter = 'blur(10px)';
-                  }
-                });
-          
-                nsfwOverlays.forEach(overlay => {
-                  if (this.checked) {
-                    overlay.style.opacity = '0';
-                  } else {
-                    overlay.style.opacity = '1';
-                  }
-                });
-              });
-          
-              // Modal functionality
-              const modal = document.getElementById('imageModal');
-              const modalImg = document.getElementById('modalImage');
-              const modalTitle = document.querySelector('.modal-title');
-              const modalText = document.querySelector('.modal-text');
-              const closeBtn = document.querySelector('#art .close');
-
-              document.querySelectorAll('#art .art-item').forEach(item => {
-                item.addEventListener('click', function() {
-                  const img = this.querySelector('img');
-                  const fullSizeUrl = img.src.replace('/thumbnails/', '/full_size/');
-                  const description = this.getAttribute('data-description');
-                  const title = this.getAttribute('data-title');
-                  
-                  modal.style.display = 'block';
-                  const modalContainer = document.querySelector('.modal-image-container');
-                  modalContainer.classList.remove('loaded'); // Remove loaded class
-                  modalImg.classList.remove('loaded');
-                  modalTitle.textContent = title;
-                  modalText.textContent = description;
-                  
-                  // Load the full-size image
-                  modalImg.onload = function() {
-                    setTimeout(() => {
-                      modalImg.classList.add('loaded');
-                      modalContainer.classList.add('loaded'); // Add loaded class to container
-                    }, 100);
-                  };
-                  modalImg.src = fullSizeUrl;
-                });
-              });
-
-              closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-              });
-
-              window.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                  modal.style.display = 'none';
-                }
-              });
-            </script>
-          </div>
-
-
-          <div id="projects" class="content-section" style="display:none;">
-            <h1 class="shifted-header">Projects</h1>
-
-              <!-- Project 1 -->
-              <a href="https://github.com/Nadavc220/MultiViewRender" class="project-block blue-block">
-                <img src="images/projects/360renderer.png" alt="AI Art Generator" class="project-image">
-                <div class="project-content">
-                  <div class="project-title">The 3D Researcher Blender Toolkit v0.1</div>
-                  <div class="project-description">
-                    05/2025 <br>
-                    A collection of python bpy scripts gathering and automating useful blender functionality for computer graphics researchers.
-                  </div>
-                </div>
-              </a>
-          </div>
+    <article class="pub" style="--venue:var(--pig-pub)">
+      <div class="pub-img"><img src="images/teasers/temp_teaser.png" alt="Conditional Balance teaser"></div>
+      <div>
+        <div class="venue">CVPR 2025</div>
+        <h3>Conditional Balance: Improving Multi-Conditioning Trade-Offs in Image Generation</h3>
+        <div class="authors"><span class="me">Nadav Z. Cohen</span>, <a href="https://www.linkedin.com/in/oronnir/" target="_blank">Oron Nir</a>, <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">Ariel Shamir</a></div>
+        <div class="links">
+          <a href="https://nadavc220.github.io/conditional-balance.github.io/" target="_blank">Project</a>
+          <a href="https://arxiv.org/abs/2412.19853" target="_blank">arXiv</a>
+          <a href="https://github.com/Nadavc220/conditional-balance" target="_blank">Code</a>
         </div>
+      </div>
+    </article>
 
-        <footer class="site-footer">
-          <p>&copy; 2025 Nadav Cohen. All rights reserved.</p>
-          <p>Computer Science Ph.D. student at Reichman University.</p>
-        </footer>
+    <article class="pub" style="--venue:var(--pig-news)">
+      <div class="pub-img"><img src="images/teasers/ssiap.jpg" alt="Semantic Segmentation in Art Paintings teaser"></div>
+      <div>
+        <div class="venue">Eurographics 2022</div>
+        <h3>Semantic Segmentation in Art Paintings</h3>
+        <div class="authors"><span class="me">Nadav Z. Cohen</span>, <a href="https://www.linkedin.com/in/yael-newman-34228b79/" target="_blank">Yael Newman</a>, <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">Ariel Shamir</a></div>
+        <div class="links">
+          <a href="https://nadavc220.github.io/ssiap" target="_blank">Project</a>
+          <a href="https://arxiv.org/abs/2203.03238" target="_blank">arXiv</a>
+          <a href="https://github.com/nadavc220/semanticsegmentationinartpaintings" target="_blank">Code</a>
+        </div>
+      </div>
+    </article>
+  </section>
 
-        <script>
-          /* Modified showSection function to eliminate shifting */
-          function showSection(sectionId) {
-            let sections = document.getElementsByClassName('content-section');
-            
-            // First set all other sections to opacity 0
-            for (let section of sections) {
-              if (section.id !== sectionId) {
-                section.style.opacity = '0';
-                section.style.visibility = 'hidden';
-                section.classList.remove('active');
-              }
-            }
-            
-            // Short timeout to allow the fade out to complete before repositioning
-            setTimeout(() => {
-              // Now handle display properties
-              for (let section of sections) {
-                if (section.id !== sectionId) {
-                  section.style.display = 'none';
-                  section.style.position = 'absolute';
-                } else {
-                  // Show the selected section
-                  section.style.display = 'block';
-                  section.style.position = 'relative';
-                  section.style.visibility = 'visible';
-                  section.classList.add('active');
-                  
-                  // Set opacity after a tiny delay to ensure smooth transition
-                  setTimeout(() => {
-                    section.style.opacity = '1';
-                  }, 10);
-                }
-              }
-            }, 300); // Delay slightly longer than the opacity transition
-          }
-        </script>
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-head"><h2>Projects</h2><span class="count">01</span></div>
+    <a class="project" href="https://github.com/Nadavc220/MultiViewRender" target="_blank">
+      <img src="images/projects/360renderer.png" alt="Blender Toolkit">
+      <div class="body">
+        <div class="date">May 2025</div>
+        <h3>The 3D Researcher Blender Toolkit v0.1</h3>
+        <p>A collection of Python bpy scripts that gather and automate useful Blender functionality for computer graphics researchers.</p>
+      </div>
+    </a>
+  </section>
 
+  <!-- ART -->
+  <section id="art" class="section">
+    <div class="art-top">
+      <div class="section-head" style="margin:0"><h2>Paintings</h2><span class="count">gallery</span></div>
+      <label class="toggle"><span class="switch"><input type="checkbox" id="nsfwToggle"><span class="slider"></span></span>Show NSFW</label>
+    </div>
+    <div class="art-grid" id="artGrid"></div>
+  </section>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <button class="modal-close" id="modalClose">&times;</button>
+  <div class="modal-box">
+    <img id="modalImg" src="" alt="">
+    <div class="modal-info"><h3 id="modalTitle"></h3><p id="modalText"></p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="sig">Nadav Z. Cohen</div>
+  <p>Computer Science Ph.D. student · Reichman University · © 2026</p>
+</footer>
+
+<script>
+/* ---- section switching ---- */
+const buttons=document.querySelectorAll('.nav-btn');
+const sections=document.querySelectorAll('.section');
+const root=document.documentElement;
+buttons.forEach(btn=>btn.addEventListener('click',()=>{
+  const t=btn.dataset.target;
+  buttons.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  root.style.setProperty('--accent',`var(${btn.dataset.accent})`);
+  sections.forEach(s=>s.classList.toggle('active',s.id===t));
+  window.scrollTo({top:document.querySelector('nav').offsetTop-1,behavior:'smooth'});
+}));
+
+/* ---- art data ---- */
+const art=[
+  {t:"Portrait Oil Study",img:"gurney_portrait_0",d:"A realistic oil paint study, portrait of a woman. After James Gurney."},
+  {t:"Leopard Sketch",img:"leopard",d:"A detailed pencil sketch of a leopard."},
+  {t:"Dark Knight",img:"batman",d:"A black marker sketch of Batman as portrayed by Robert Pattinson in the 2022 Matt Reeves film \"The Batman\"."},
+  {t:"\"Abraham\" after Caravaggio",img:"caravaggio",d:"A study inspired by Caravaggio's dramatic style, emphasizing the interplay of light and shadow."},
+  {t:"Woman in Blue",img:"woman_blue",d:"Abstract portrait of a woman in blue tones, exploring feminine form and emotion. After @SachaLeyendecker.",nsfw:true},
+  {t:"Woman Sketch",img:"portrait_woman",d:"A detailed portrait study of a woman, focusing on facial expression."},
+  {t:"Jasper National Park",img:"edith_cavell",d:"A mountain range in Jasper National Park in oil paints."},
+  {t:"\"Horse Sketch\" after Degas",img:"horse_pencil",d:"A detailed pencil study of a horse, showcasing movement and form."},
+  {t:"Woman in Red",img:"woman_red",d:"Figure study in red tones exploring form and composition. After @SachaLeyendecker.",nsfw:true},
+  {t:"Sculpture Sketch",img:"sculpture_sketch",d:""},
+  {t:"Saitama",img:"ConsNormPunch",d:""},
+  {t:"Danielle Pen Sketch",img:"pen_sketch",d:"A sketch of Danielle searching for bears in the cloud forests of Ecuador."},
+  {t:"Van-Gogh Study",img:"gogh",d:"A study of Van Gogh's early paintings, exploring color and brushwork."},
+  {t:"Woman Sketch",img:"woman_sketch",d:"A figure sketch study focusing on form and gesture.",nsfw:true},
+];
+const grid=document.getElementById('artGrid');
+art.forEach(a=>{
+  const el=document.createElement('div');
+  el.className='art-item';
+  el.innerHTML=`<img src="images/art/thumbnails/${a.img}.jpg" alt="${a.t}" class="${a.nsfw?'nsfw':''}">
+    ${a.nsfw?'<span class="nsfw-tag">NSFW</span>':''}
+    <div class="cap">${a.t}</div>`;
+  el.addEventListener('click',()=>openModal(a));
+  grid.appendChild(el);
+});
+
+/* ---- nsfw toggle ---- */
+document.getElementById('nsfwToggle').addEventListener('change',function(){
+  document.querySelectorAll('.art-item img.nsfw, .art-item img').forEach(img=>{});
+  document.querySelectorAll('.art-item').forEach((el,i)=>{
+    if(art[i].nsfw){
+      el.querySelector('img').style.filter=this.checked?'none':'blur(14px)';
+      const tag=el.querySelector('.nsfw-tag'); if(tag)tag.style.opacity=this.checked?'0':'1';
+    }
+  });
+});
+
+/* ---- modal ---- */
+const modal=document.getElementById('modal');
+function openModal(a){
+  document.getElementById('modalImg').src=`images/art/full_size/${a.img}.jpg`;
+  document.getElementById('modalTitle').textContent=a.t;
+  document.getElementById('modalText').textContent=a.d||"—";
+  modal.classList.add('open');
+}
+document.getElementById('modalClose').addEventListener('click',()=>modal.classList.remove('open'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
+document.addEventListener('contextmenu',e=>{if(e.target.tagName==='IMG')e.preventDefault()});
+</script>
 </body>
 </html>
