@@ -64,7 +64,7 @@ body::before{
 
 /* ---------- HERO ---------- */
 .hero{position:relative;z-index:1;padding:70px 0 40px}
-.hero-grid{display:grid;grid-template-columns:1.7fr .55fr;gap:52px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.7fr .55fr;gap:28px;align-items:center}
 .eyebrow{
   font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
   color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:12px;
@@ -84,7 +84,7 @@ body::before{
 .lede a{color:var(--paper);border-bottom:1px solid var(--accent);transition:color .2s}
 .lede a:hover{color:var(--accent)}
 
-.portrait{position:relative;max-width:240px;justify-self:end}
+.portrait{position:relative;max-width:240px;justify-self:start}
 .portrait img{
   width:100%;border-radius:6px;
   filter:contrast(1.02);
@@ -191,6 +191,12 @@ main{position:relative;z-index:1;padding:64px 0 40px;min-height:60vh}
   border:1px solid var(--line);color:var(--paper-dim);transition:all .2s;
 }
 .links a:hover{border-color:var(--venue,var(--accent));color:var(--paper);background:#f6f4ef}
+/* disabled link — for papers/resources not available yet */
+.links a.disabled{
+  color:#c3bdb2;border-color:var(--line);border-style:dashed;
+  cursor:not-allowed;pointer-events:none;background:transparent;
+}
+.links a.disabled:hover{border-color:var(--line);color:#c3bdb2;background:transparent}
 
 /* ---------- PROJECTS ---------- */
 .project{
@@ -222,14 +228,14 @@ input:checked + .slider::before{transform:translateX(20px)}
 .art-item .cap{
   position:absolute;left:0;right:0;bottom:0;padding:26px 12px 12px;
   background:linear-gradient(transparent,rgba(0,0,0,.85));
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--paper);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:#fff;
   opacity:0;transform:translateY(6px);transition:.3s;
 }
 .art-item:hover .cap{opacity:1;transform:none}
 .art-item .nsfw-tag{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--paper);
-  border:1px solid var(--paper);padding:5px 10px;border-radius:3px;pointer-events:none;
+  font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:#fff;
+  border:1px solid #fff;padding:5px 10px;border-radius:3px;pointer-events:none;
 }
 .art-item img.nsfw{filter:blur(14px)}
 
@@ -342,7 +348,21 @@ footer .sig{font-family:var(--display);font-style:italic;font-size:17px;color:va
 
   <!-- PUBLICATIONS -->
   <section id="publications" class="section">
-    <div class="section-head"><h2>Publications</h2><span class="count">03</span></div>
+    <div class="section-head"><h2>Publications</h2><span class="count">04</span></div>
+
+    <article class="pub" style="--venue:red">
+      <div class="pub-img"><img src="images/teasers/mvb_teaser.jpg" alt="Many-Videos Browsing teaser"></div>
+      <div>
+        <div class="venue">SIGGRAPH Asia 2026</div>
+        <h3>Many-Videos Browsing: Interactive Visualization of Generated Video Collections</h3>
+        <div class="authors"><span>Jotaro Sakamiya</span>, <span>George Xu</span>, <a href="https://anranqi.github.io/" target="_blank">Anran Qi</a>, <a href="https://jdily.github.io/" target="_blank">I-Chao Shen</a>, <span class="me">Nadav Z. Cohen</span>, <a href="https://koyama.xyz/" target="_blank">Yuki Koyama</a>, <a href="https://www-ui.is.s.u-tokyo.ac.jp/~takeo/" target="_blank">Takeo Igarashi</a></div>
+        <div class="links">
+          <a class="disabled" title="Coming soon">Project</a>
+          <a class="disabled" title="Coming soon">arXiv</a>
+          <a class="disabled" title="Coming soon">Code</a>
+        </div>
+      </div>
+    </article>
 
     <article class="pub" style="--venue:blueviolet">
       <div class="pub-img"><img src="images/teasers/Picture1.png" alt="Colorful-Noise teaser"></div>
@@ -469,7 +489,6 @@ art.forEach(a=>{
 
 /* ---- nsfw toggle ---- */
 document.getElementById('nsfwToggle').addEventListener('change',function(){
-  document.querySelectorAll('.art-item img.nsfw, .art-item img').forEach(img=>{});
   document.querySelectorAll('.art-item').forEach((el,i)=>{
     if(art[i].nsfw){
       el.querySelector('img').style.filter=this.checked?'none':'blur(14px)';
