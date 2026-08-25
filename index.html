@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/png" href="images/seal_icon.png">
 
@@ -23,11 +23,11 @@
 
 <style>
 :root{
-  --ground:#fbfaf7;        /* bright paper */
-  --ground-soft:#ffffff;   /* raised card surface */
-  --paper:#1a1815;         /* near-black ink text */
-  --paper-dim:#6b655c;     /* muted body */
-  --line:#e7e3da;          /* hairline */
+  --ground:#f0f0ee;        /* dim white — soft neutral light grey */
+  --ground-soft:#fcfcfb;   /* raised card surface, near-white */
+  --paper:#1a1a18;         /* near-black ink text */
+  --paper-dim:#66655f;     /* muted body */
+  --line:#e2e2de;          /* hairline */
   /* pigment accents, used as a section filing system — bright & poppy */
   --pig-news:#f2a03d;      /* marigold */
   --pig-pub:#1fb583;       /* jade */
@@ -59,32 +59,34 @@ img{display:block;max-width:100%}
 /* subtle grain / vignette so the dark ground feels like canvas, not a void */
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(120% 80% at 50% -10%, rgba(242,160,61,.12), transparent 55%);
+  background:radial-gradient(120% 80% at 50% -10%, rgba(242,160,61,.08), transparent 55%);
 }
 
 /* ---------- HERO ---------- */
 .hero{position:relative;z-index:1;padding:70px 0 40px}
-.hero-grid{display:grid;grid-template-columns:1.7fr .55fr;gap:28px;align-items:center}
+.hero-grid{display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.hero-grid > div:first-child{flex:0 1 560px;min-width:0}
 .eyebrow{
   font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
   color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:12px;
 }
 .eyebrow::before{content:"";width:34px;height:1px;background:var(--accent)}
 .hero h1{
-  font-family:var(--display);
-  font-weight:900;
-  font-size:clamp(48px,7.2vw,92px);
-  line-height:.94;
-  letter-spacing:-.02em;
-  margin-bottom:26px;
+  font-family:"Caveat",cursive;
+  font-weight:700;
+  font-size:clamp(52px,7vw,88px);
+  line-height:1;
+  letter-spacing:0;
+  margin-bottom:22px;
+  white-space:nowrap;
 }
-.hero h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+.hero h1 em{font-style:normal;font-weight:600;color:var(--accent)}
 .lede{font-size:17px;color:var(--paper-dim);max-width:52ch;margin-bottom:14px}
 .lede strong{color:var(--paper);font-weight:600}
 .lede a{color:var(--paper);border-bottom:1px solid var(--accent);transition:color .2s}
 .lede a:hover{color:var(--accent)}
 
-.portrait{position:relative;max-width:240px;justify-self:start}
+.portrait{position:relative;width:240px;justify-self:start}
 .portrait img{
   width:100%;border-radius:6px;
   filter:contrast(1.02);
@@ -103,13 +105,13 @@ body::before{
   box-shadow:0 2px 6px rgba(26,24,21,.05);
   transition:transform .2s ease,border-color .2s ease,background .2s ease;
 }
-.socials a:hover{transform:translateY(-3px);border-color:var(--accent);background:#fff6ea}
+.socials a:hover{transform:translateY(-3px);border-color:var(--accent);background:#f4f4f2}
 .socials img{width:19px;height:19px;filter:invert(18%) sepia(6%) saturate(400%) hue-rotate(3deg);opacity:.8}
 
 /* ---------- NAV ---------- */
 nav{
   position:sticky;top:0;z-index:20;
-  background:rgba(251,250,247,.85);backdrop-filter:blur(12px);
+  background:rgba(240,240,238,.85);backdrop-filter:blur(12px);
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
 .nav-inner{display:flex;gap:6px;max-width:1080px;margin:0 auto;padding:0 20px}
@@ -156,13 +158,13 @@ main{position:relative;z-index:1;padding:64px 0 40px;min-height:60vh}
 .entry .date{font-family:var(--mono);font-size:12.5px;color:var(--dot,var(--accent));letter-spacing:.04em}
 .entry p{color:var(--paper);font-size:16px;margin-top:2px}
 
-.talks-list,.teaching-list{display:grid;gap:10px}
+.talks-list,.teaching-list,.service-list{display:grid;gap:10px}
 .pill{
   border:1px solid var(--line);border-left:3px solid var(--pill,var(--accent));
   border-radius:4px;padding:13px 18px;font-size:15px;color:var(--paper-dim);
   transition:background .2s,color .2s;background:var(--ground-soft);
 }
-.pill:hover{background:#fdfcfa;color:var(--paper)}
+.pill:hover{background:#f6f6f4;color:var(--paper)}
 .pill .k{font-family:var(--mono);font-size:12px;color:var(--pill,var(--accent));margin-right:10px}
 
 /* ---------- PUBLICATIONS ---------- */
@@ -174,7 +176,7 @@ main{position:relative;z-index:1;padding:64px 0 40px;min-height:60vh}
 }
 .pub::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--venue,var(--accent))}
 .pub:hover{transform:translateY(-4px);border-color:var(--venue,var(--accent));box-shadow:0 14px 34px rgba(26,24,21,.1)}
-.pub-img{border-radius:5px;overflow:hidden;background:#f0ede6}
+.pub-img{border-radius:5px;overflow:hidden;background:#e8e8e4}
 .pub-img img{width:100%;height:auto;display:block}
 .venue{
   font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
@@ -190,7 +192,7 @@ main{position:relative;z-index:1;padding:64px 0 40px;min-height:60vh}
   font-family:var(--mono);font-size:12.5px;padding:7px 14px;border-radius:20px;
   border:1px solid var(--line);color:var(--paper-dim);transition:all .2s;
 }
-.links a:hover{border-color:var(--venue,var(--accent));color:var(--paper);background:#f6f4ef}
+.links a:hover{border-color:var(--venue,var(--accent));color:var(--paper);background:#f4f4f2}
 /* disabled link — for papers/resources not available yet */
 .links a.disabled{
   color:#c3bdb2;border-color:var(--line);border-style:dashed;
@@ -254,7 +256,7 @@ footer{
   position:relative;z-index:1;border-top:1px solid var(--line);margin-top:70px;
   padding:34px 0;text-align:center;color:var(--paper-dim);font-size:13.5px;
 }
-footer .sig{font-family:var(--display);font-style:italic;font-size:17px;color:var(--paper);margin-bottom:6px}
+footer .sig{font-family:"Caveat",cursive;font-weight:700;font-size:26px;color:var(--paper);margin-bottom:6px}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:820px){
@@ -267,6 +269,7 @@ footer .sig{font-family:var(--display);font-style:italic;font-size:17px;color:va
   .nav-btn{white-space:nowrap;padding:16px 14px}
 }
 @media (max-width:480px){
+  .hero h1{font-size:clamp(38px,12vw,52px)}
   .art-grid{grid-template-columns:1fr}
   .wrap{padding:0 20px}
 }
@@ -282,7 +285,7 @@ footer .sig{font-family:var(--display);font-style:italic;font-size:17px;color:va
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow">Computer Science · Ph.D.</div>
-      <h1>Nadav Z.<br><em>Cohen</em></h1>
+      <h1>Nadav Z. <em>Cohen</em></h1>
       <p class="lede">Ph.D. student at Reichman University with <a href="https://faculty.runi.ac.il/arik/site/index.asp" target="_blank">Prof. Ariel Shamir</a>. I build <strong>generative models for 2D and 3D</strong> — algorithm-driven art forms and better tools for the game and animation industries.</p>
       <p class="lede">Currently I'm interning at Adobe in Seattle as a Research Scientist in the Creative Intelligence group, mentored by Aharon Hertzman and Eli Shechtman. Previously, I was a Visiting Researcher in the <a href="https://www-ui.is.s.u-tokyo.ac.jp/en/" target="_blank">IGARASHI Lab</a> at the University of Tokyo, working with I-Chao Shen and Takeo Igarashi.</p>
       <p class="lede">Off-screen: painting, nature photography, gaming, and time with family and friends.</p>
@@ -343,6 +346,11 @@ footer .sig{font-family:var(--display);font-style:italic;font-size:17px;color:va
       <div class="pill" style="--pill:blueviolet"><span class="k">Fall 2026</span>Introduction to Generative Models and Computational Creativity — Lecturer & Course Creator, Reichman University.</div>
       <div class="pill" style="--pill:var(--pig-art)"><span class="k">Spr 25–27</span>Introduction to Computer Graphics — TA, Reichman University.</div>
       <div class="pill" style="--pill:var(--pig-pub)"><span class="k">Fall 2024</span>Introduction to Computer Science — TA, Reichman University.</div>
+    </div>
+
+    <div class="subhead">Academic Service</div>
+    <div class="service-list">
+      <div class="pill" style="--pill:var(--pig-proj)"><span class="k">2026</span>Reviewer — CVPR, ECCV, SIGGRAPH, and NeurIPS.</div>
     </div>
   </section>
 
